@@ -1,0 +1,30 @@
+image: docker:latest
+services:
+  - docker:dind
+
+variables:
+  DOCKER_DRIVER: overlay
+  SPRING_PROFILES_ACTIVE: gitlab-ci
+
+stages:
+  - build
+  - package
+  - deploy
+
+maven-build:
+  image: maven:3-jdk-8
+  stage: build
+  script: "mvn package -B"
+  artifacts:
+    paths:
+      - backend/target/*.jar
+
+docker-build:
+  stage: package
+  script:
+  - docker build -t registry.gitlab.com/treyla/referromizer .
+  - docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN registry.gitlab.com
+  - docker push registry.gitlab.com/treyla/referromizer
+  - docker login --username=_ --password=$HEROKU_API_KEY registry.heroku.com
+  - docker build -t registry.heroku.com/referromizer/web .
+  - docker push registry.heroku.com/referromizer/web
