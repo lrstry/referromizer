@@ -76,6 +76,15 @@ public class ReferralController {
 
     }
 
+    @RequestMapping(method = RequestMethod.GET, value = "/count",
+            produces = "application/json; charset=utf-8")
+    public ResponseEntity<Long> readTotalReferrals() {
+
+        Long totalReferrals = referralService.fetchTotalReferrals();
+        return new ResponseEntity<>(totalReferrals, HttpStatus.OK);
+
+    }
+
     @RequestMapping(method = RequestMethod.GET, value = "/{providerId}/count",
             produces = "application/json; charset=utf-8")
     public ResponseEntity<Long> readTotalReferralsForProvider(@PathVariable String providerId) {

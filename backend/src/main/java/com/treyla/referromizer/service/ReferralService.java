@@ -10,8 +10,8 @@ public interface ReferralService {
 
     Referral newReferral(ReferralBuilder referral);
     Referral fetchRandomReferralForProviderId(UUID providerId);
+    Long fetchTotalReferrals();
     Long fetchTotalReferralsForProviderId(UUID providerId);
     boolean refIdExists(String refId);
     boolean refUrlExists(String refUrl);
-
 }

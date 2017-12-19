@@ -41,6 +41,11 @@ public class ReferralServiceImpl implements ReferralService {
     }
 
     @Override
+    public Long fetchTotalReferrals() {
+        return referralRepository.count();
+    }
+
+    @Override
     public Long fetchTotalReferralsForProviderId(UUID providerId) {
         Validate.notNull(providerId);
         return referralRepository.countByProviderId(providerId);
