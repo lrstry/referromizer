@@ -1,12 +1,10 @@
 <template>
   <div>
-    <div>
-      <b-container id="referromizerLogo">
-        <img src="./assets/img/logo.png">
+    <div id="referromizerLogo">
+        <b-img center src="src/assets/img/logo.png" fluid alt="Logo" />
         <div>
           <h4>Application for sharing and retrieving random referral links to various services.</h4>
         </div>
-      </b-container>
     </div>
     <div>
       <v-submit-referral-modal v-on:closeModal="closeModal()" :show="isSubmitReferralModalVisible"></v-submit-referral-modal>
@@ -120,13 +118,6 @@ body {
   color: white;
   text-align: center;
   padding-bottom: 2rem;
-}
-
-#referromizerLogo img {
-  z-index: 0;
-  display: block;
-  margin: auto;
-  width: 100%;
 }
 
 #provider span {
