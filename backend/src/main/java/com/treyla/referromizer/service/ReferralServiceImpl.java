@@ -62,7 +62,8 @@ public class ReferralServiceImpl implements ReferralService {
     public boolean refUrlExists(String refUrl) {
         Validate.notNull(refUrl);
         Validate.notEmpty(refUrl);
-        return referralRepository.existsByRefUrl(refUrl);
+        String urlInDatabase = Referral.sanitizeUrl(refUrl);
+        return referralRepository.existsByRefUrl(urlInDatabase);
     }
 
 }

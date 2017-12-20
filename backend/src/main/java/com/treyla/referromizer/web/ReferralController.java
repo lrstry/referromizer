@@ -26,7 +26,7 @@ public class ReferralController {
     ReferralService referralService;
 
     @RequestMapping(method = RequestMethod.POST, produces = "application/json; charset=utf-8")
-    ResponseEntity<Referral> createReferral(@RequestBody Referral referralBody) {
+    ResponseEntity<Object> createReferral(@RequestBody Referral referralBody) {
 
         Validate.notNull(referralBody);
 
@@ -39,11 +39,17 @@ public class ReferralController {
         String refId = referralBody.getRefId();
         String refUrl = referralBody.getRefUrl();
 
-        Validate.notEmpty(refId);
-        Validate.notEmpty(refUrl);
+        Validate.notNull(refId);
+        Validate.notNull(refUrl);
 
-        if (referralService.refIdExists(refId) || referralService.refUrlExists(refUrl)) {
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        if (refId.isEmpty() && refUrl.isEmpty()) {
+            Validate.notEmpty(refId);
+            Validate.notEmpty(refUrl);
+        }
+
+        if ((!refId.isEmpty() && referralService.refIdExists(refId))
+                || (!refUrl.isEmpty() && referralService.refUrlExists(refUrl))) {
+            return new ResponseEntity<>("Referral already existing.", HttpStatus.BAD_REQUEST);
         }
 
         if (Objects.nonNull(provider)) {

@@ -2,59 +2,60 @@
   <div>
     <b-input-group id="referralInputGroup">
       <b-input-group-button>
-        <b-button 
-          class="btnCustom btnCustom-default" 
-          @click="onSubmitNewReferralPress" 
-          v-b-tooltip.hover.bottom 
+        <b-button
+          class="btnCustom btnCustom-default"
+          @click="onSubmitNewReferralPress"
+          v-b-tooltip.hover.bottom
           title="Add Referral">
-          <icon 
-            name="plus" 
-            scale="1.8" 
+          <icon
+            name="plus"
+            scale="1.8"
             label="Add Referral"/>
         </b-button>
       </b-input-group-button>
       <b-input-group-addon id="hitsBadge">
-        <b-badge 
+        <b-badge
           v-if="isReferralPresent"
-          pill 
+          pill
           variant="dark">
           {{ referral.hits }} {{ hitsBadgeText }}
         </b-badge>
       </b-input-group-addon>
-      <b-form-input 
-        id="referralInput" 
-        type="text" 
-        title="Number of hits" 
-        v-model="referralInputValue" 
+      <b-form-input
+        id="referralInput"
+        type="text"
+        title="Number of hits"
+        v-model="referralInputValue"
         disabled/>
       <b-input-group-button>
-        <b-button 
+        <b-button
           class="btnCustom"
-          id="gotoLinkButton" 
-          v-b-tooltip.hover.bottom 
-          :href="referral.refUrl" 
-          title="Goto referral link" 
-          target="_blank" 
-          :disabled="!isRefUrlPresent" 
+          id="gotoLinkButton"
+          v-b-tooltip.hover.bottom
+          :href="referral.refUrl"
+          title="Goto referral link"
+          target="_blank"
+          :disabled="!isRefUrlPresent"
           variant="primary">
-          <icon 
-            name="external-link" 
-            scale="1.8" 
+          <icon
+            name="external-link"
+            scale="1.8"
             label="Goto referral link"/>
         </b-button>
       </b-input-group-button>
       <b-input-group-button>
-        <b-button 
+        <b-button
           class="btnCustom"
-          id="copyButton" 
-          v-clipboard:copy="referral.refId" 
-          v-b-tooltip.hover.bottom 
-          title="Copy to clipboard" 
-          :disabled="!isRefIdGiven" 
+          id="copyButton"
+          v-clipboard:copy="referral.refId"
+          v-clipboard:success="onCopySuccess"
+          v-b-tooltip.hover.bottom
+          title="Copy to clipboard"
+          :disabled="!isRefIdGiven"
           variant="warning">
-          <icon 
-            name="clipboard" 
-            scale="1.8" 
+          <icon
+            name="clipboard"
+            scale="1.8"
             label="Copy to clipboard"/>
         </b-button>
       </b-input-group-button>
@@ -172,6 +173,9 @@ export default {
       if (this.$parent) {
         this.$parent.isSubmitReferralModalVisible = true;
       }
+    },
+    onCopySuccess() {
+      this.$toasted.info("Copied to clipboard!");
     }
   }
 };

@@ -104,7 +104,7 @@ public class Referral {
 
     }
 
-    private String sanitizeUrl(String url) {
+    public static String sanitizeUrl(String url) {
         if (!url.matches("^(http|https)://.*$")){
             return "http://" + url;
         } else {

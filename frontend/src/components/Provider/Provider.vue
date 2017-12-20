@@ -1,13 +1,13 @@
 <template>
   <div>
     <b-form-group label="Please select a provider:">
-      <b-form-select 
-        v:model="selectedProvider" 
-        class="mb-3" 
+      <b-form-select
+        v:model="selectedProvider"
+        class="mb-3"
         @input="onSelectProvider">
-        <option 
-          v-for="provider in providers" 
-          :key="provider.id" 
+        <option
+          v-for="provider in providers"
+          :key="provider.id"
           :value="provider">{{ provider.name }}</option>
       </b-form-select>
     </b-form-group>
@@ -54,7 +54,3 @@ export default {
   }
 };
 </script>
-
-<style lang="scss" scoped>
-
-</style>
