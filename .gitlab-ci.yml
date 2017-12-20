@@ -26,5 +26,5 @@ docker-build:
   - docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN registry.gitlab.com
   - docker push registry.gitlab.com/treyla/referromizer
   - docker login --username=_ --password=$HEROKU_API_KEY registry.heroku.com
-  - docker build -t registry.heroku.com/referromizer-staging/web .
-  - docker push registry.heroku.com/referromizer-staging/web
+  - docker build -t registry.heroku.com/referromizer/web .
+  - docker push registry.heroku.com/referromizer/web
