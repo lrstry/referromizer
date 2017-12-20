@@ -1,7 +1,7 @@
 <template>
   <div>
     <div id="referromizerLogo">
-        <b-img center src="./assets/img/logo.png" fluid alt="Logo" />
+        <img src="./assets/img/logo.png" alt="Logo" />
         <div>
           <h4>Application for sharing and retrieving random referral links to various services.</h4>
         </div>
