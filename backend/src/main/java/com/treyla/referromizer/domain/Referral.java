@@ -1,12 +1,9 @@
 package com.treyla.referromizer.domain;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.sun.javaws.exceptions.InvalidArgumentException;
-import org.apache.commons.lang3.Validate;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 import java.util.UUID;
 import java.util.regex.Matcher;
 
@@ -63,6 +60,14 @@ public class Referral {
         this.hits = Math.incrementExact(this.hits);
     }
 
+    private String extractRefIdFromValidRefUrl(String refUrl) {
+        Matcher refUrlMatcher = provider.getRefUrlMatcher(refUrl);
+        if (refUrlMatcher.matches()) {
+            return refUrlMatcher.group(1);
+        }
+        return null;
+    }
+
     public static final class ReferralBuilder {
 
         // required parameter
@@ -78,14 +83,6 @@ public class Referral {
             return new Referral(this);
         }
 
-    }
-
-    private String extractRefIdFromValidRefUrl(String refUrl) {
-        Matcher refUrlMatcher = provider.getRefUrlMatcher(refUrl);
-        if (refUrlMatcher.matches()) {
-            return refUrlMatcher.group(1);
-        }
-        return null;
     }
 
 }

@@ -1,7 +1,5 @@
 package com.treyla.referromizer.domain;
 
-import jdk.nashorn.internal.runtime.regexp.joni.Regex;
-
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;

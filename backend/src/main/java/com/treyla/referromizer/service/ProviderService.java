@@ -8,6 +8,7 @@ import java.util.UUID;
 public interface ProviderService {
 
     Provider fetchProviderById(UUID providerId);
+
     List<Provider> fetchAllProviders();
 
 }

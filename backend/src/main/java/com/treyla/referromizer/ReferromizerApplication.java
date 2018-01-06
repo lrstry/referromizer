@@ -11,7 +11,7 @@ public class ReferromizerApplication {
         String port = System.getenv().get("PORT");
         String dyno = System.getenv().get("DYNO");
 
-        if(port != null && dyno != null) {
+        if (port != null && dyno != null) {
             System.getProperties().put("server.port", port);
         }
 

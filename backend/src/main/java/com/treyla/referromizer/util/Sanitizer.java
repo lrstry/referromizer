@@ -6,7 +6,7 @@ public class Sanitizer {
 
         url = url.trim();
 
-        if (!url.matches("^(http|https)://.*$")){
+        if (!url.matches("^(http|https)://.*$")) {
             return "http://" + url;
         } else {
             return url;

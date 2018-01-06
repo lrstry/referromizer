@@ -11,8 +11,11 @@ import java.util.UUID;
 public interface ReferralRepository extends CrudRepository<Referral, UUID> {
 
     List<Referral> findAllByProviderId(UUID providerId);
+
     Long countByProviderId(UUID providerId);
+
     boolean existsByRefId(String refId);
+
     boolean existsByRefUrl(String refUrl);
 
 }
