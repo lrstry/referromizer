@@ -169,7 +169,7 @@ body {
   box-shadow: none;
 }
 
-@media (orientation: landscape) {
+@media screen and (orientation: landscape) and (max-height: 420px) {
   .hide-on-landscape {
     display: none;
   }
