@@ -36,8 +36,8 @@ public class ReferralController {
 
         Validate.notNull(provider);
 
-        String refId = referralBody.getRefId();
-        String refUrl = referralBody.getRefUrl();
+        String refId = referralBody.getRefId().trim();
+        String refUrl = referralBody.getRefUrl().trim();
 
         Validate.notNull(refId);
         Validate.notNull(refUrl);
