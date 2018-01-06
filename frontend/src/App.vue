@@ -3,7 +3,7 @@
     <div>
       <b-container id="referromizerLogo">
         <img src="./assets/img/logo.png">
-        <div>
+        <div class="hide-on-landscape">
           <h4>Application for sharing and retrieving random referral links to various services.</h4>
         </div>
       </b-container>
@@ -12,7 +12,7 @@
       <v-submit-referral-modal v-on:closeModal="closeModal()" :show="isSubmitReferralModalVisible"></v-submit-referral-modal>
     </div>
     <b-container id="content">
-      <b-row align-v="center">
+      <b-row>
         <b-col>
           <div id="provider">
             <v-provider v-on:providerChanged="changeSelectedProvider($event)"></v-provider>
@@ -135,8 +135,12 @@ body {
 
 #content {
   z-index: 1;
-  padding-top: 6rem;
-  padding-bottom: 6rem;
+  position: absolute;
+  padding: 20px;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
 }
 
 #footerBar {
@@ -163,5 +167,11 @@ body {
   outline: 0;
   -webkit-box-shadow: none;
   box-shadow: none;
+}
+
+@media (orientation: landscape) {
+  .hide-on-landscape {
+    display: none;
+  }
 }
 </style>
