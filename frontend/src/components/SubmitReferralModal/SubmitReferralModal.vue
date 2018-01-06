@@ -25,29 +25,19 @@
       </b-form-group>
       <b-form-group label="Referral Link:">
         <b-form-input
-          v-validate.initial="'required|url'"
-          :state="isValidRefUrlGiven || isValidRefIdGiven"
+          v-validate.initial="{ required: true, regex: selectedProvider.refUrlRegex }"
+          :state="isValidRefUrlGiven"
           name="refUrlInput"
           type="text"
-          placeholder="http://..."
           v-model="refUrl"/>
         <b-form-invalid-feedback v-show="errors.has('refUrlInput')">Please provide a valid URL.</b-form-invalid-feedback>
-      </b-form-group>
-      <b-form-group label="Referral Id:">
-        <b-form-input
-          v-validate.initial="'required'"
-          :state="isValidRefIdGiven || isValidRefUrlGiven"
-          name="refIdInput"
-          type="text"
-          v-model="refId"/>
-        <b-form-invalid-feedback v-show="errors.has('refIdInput')">Please enter either a Referral Link or a Referral Id.</b-form-invalid-feedback>
       </b-form-group>
     </b-form>
   </b-modal>
 </template>
 
 <script>
-// import { axios } from '../../config/http-commons'
+// import { axios } from "../../config/http-commons";
 import axios from "axios";
 
 export default {
@@ -59,7 +49,6 @@ export default {
       selectedProvider: {},
       providers: [],
       refUrl: "",
-      refId: "",
       apiErrors: []
     };
   },
@@ -90,14 +79,8 @@ export default {
     isValidRefUrlGiven: function() {
       return !this.$validator.errors.has("refUrlInput");
     },
-    isValidRefIdGiven: function() {
-      return !this.$validator.errors.has("refIdInput");
-    },
     isSubmitReferralFormValid: function() {
-      if (
-        (this.isValidRefUrlGiven || this.isValidRefIdGiven) &&
-        this.selectedProvider.id
-      ) {
+      if (this.isValidRefUrlGiven && this.selectedProvider.id) {
         return true;
       } else {
         return false;
@@ -106,17 +89,14 @@ export default {
   },
 
   methods: {
-    createNewReferral(providerId, refId, refUrl) {
+    createNewReferral(providerId, refUrl) {
       axios
         .post("/api/referrals", {
           provider: { id: providerId },
-          refId: refId,
           refUrl: refUrl
         })
         .then(response => {
-          this.$toasted.success(
-            "Referral " + response.data.refId + " successfully created."
-          );
+          this.$toasted.success("Referral successfully created.");
         })
         .catch(e => {
           this.apiErrors.push(e);
@@ -124,21 +104,9 @@ export default {
         });
     },
     onSubmitNewReferral(event) {
-      if (this.isSubmitReferralFormValid) {
-        if (this.isValidRefIdGiven && !this.isValidRefUrlGiven) {
-          this.showModal = false;
-          this.createNewReferral(this.selectedProvider.id, this.refId, "");
-        } else if (!this.isValidRefIdGiven && this.isValidRefUrlGiven) {
-          this.showModal = false;
-          this.createNewReferral(this.selectedProvider.id, "", this.refUrl);
-        } else if (this.isValidRefIdGiven && this.isValidRefUrlGiven) {
-          this.showModal = false;
-          this.createNewReferral(
-            this.selectedProvider.id,
-            this.refId,
-            this.refUrl
-          );
-        }
+      if (this.isSubmitReferralFormValid && this.isValidRefUrlGiven) {
+        this.showModal = false;
+        this.createNewReferral(this.selectedProvider.id, this.refUrl);
       } else {
         this.showModal = true;
       }
@@ -147,7 +115,6 @@ export default {
       this.showModal = false;
       this.selectedProvider = {};
       this.refUrl = "";
-      this.refId = "";
     },
     onClosedSubmitReferralModal() {
       this.$emit("closeModal");
