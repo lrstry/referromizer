@@ -33,18 +33,13 @@ public class Provider {
         return url;
     }
 
-    public Matcher getRefIdMatcher(String refId) {
-        Pattern pattern = Pattern.compile(refIdRegex);
-        return pattern.matcher(refId);
+    public String getRefUrlRegex() {
+        return refUrlRegex;
     }
 
     public Matcher getRefUrlMatcher(String refUrl) {
         Pattern pattern = Pattern.compile(refUrlRegex);
         return pattern.matcher(refUrl);
-    }
-
-    public boolean isRefIdValid(String refId) {
-        return getRefIdMatcher(refId).matches();
     }
 
     public boolean isRefUrlValid(String refUrl) {
