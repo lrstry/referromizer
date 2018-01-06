@@ -4,12 +4,14 @@ import com.treyla.referromizer.domain.Provider;
 import com.treyla.referromizer.domain.Referral;
 import com.treyla.referromizer.service.ProviderService;
 import com.treyla.referromizer.service.ReferralService;
+import com.treyla.referromizer.util.Sanitizer;
 import org.apache.commons.lang3.Validate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.sql.Ref;
 import java.util.Objects;
 import java.util.UUID;
 
@@ -36,34 +38,23 @@ public class ReferralController {
 
         Validate.notNull(provider);
 
-        String refId = referralBody.getRefId().trim();
-        String refUrl = referralBody.getRefUrl().trim();
+        String refUrl = referralBody.getRefUrl();
+        Validate.notEmpty(refUrl);
 
-        Validate.notNull(refId);
-        Validate.notNull(refUrl);
+        refUrl = Sanitizer.sanitizeUrl(refUrl);
 
-        if (refId.isEmpty() && refUrl.isEmpty()) {
-            Validate.notEmpty(refId);
-            Validate.notEmpty(refUrl);
+        if (!provider.isRefUrlValid(refUrl)) {
+            return new ResponseEntity<>("Referral Url is invalid.", HttpStatus.BAD_REQUEST);
         }
 
-        if ((!refId.isEmpty() && referralService.refIdExists(refId))
-                || (!refUrl.isEmpty() && referralService.refUrlExists(refUrl))) {
+        if (referralService.refUrlExists(refUrl)) {
             return new ResponseEntity<>("Referral already existing.", HttpStatus.BAD_REQUEST);
         }
 
-        if (Objects.nonNull(provider)) {
-            newReferralBuilder = Referral.builder(provider)
-                    .withReferralId(refId)
-                    .withReferralUrl(refUrl);
-            Referral newReferral = referralService.newReferral(newReferralBuilder);
+        newReferralBuilder = Referral.builder(provider, refUrl);
+        Referral newReferral = referralService.newReferral(newReferralBuilder);
 
-            return new ResponseEntity<>(newReferral, HttpStatus.OK);
-
-
-        } else {
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-        }
+        return new ResponseEntity<>(newReferral, HttpStatus.OK);
 
     }
 

@@ -1,10 +1,14 @@
 package com.treyla.referromizer.domain;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.sun.javaws.exceptions.InvalidArgumentException;
+import org.apache.commons.lang3.Validate;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.UUID;
+import java.util.regex.Matcher;
 
 @Entity
 @Table(name = "referral")
@@ -27,44 +31,28 @@ public class Referral {
 
     public Referral(ReferralBuilder builder) {
         this.provider = builder.provider;
-        this.refId = builder.refId;
-        this.refUrl = sanitizeUrl(builder.refUrl);
+        this.refUrl = builder.refUrl;
+        this.refId = extractRefIdFromValidRefUrl(this.refUrl);
     }
 
-    public static ReferralBuilder builder(Provider provider) {
-        return new ReferralBuilder(provider);
+    public static ReferralBuilder builder(Provider provider, String refUrl) {
+        return new ReferralBuilder(provider, refUrl);
     }
 
     public UUID getId() {
         return id;
     }
 
-    private void setId(UUID id) {
-        this.id = id;
-    }
-
     public Provider getProvider() {
         return provider;
-    }
-
-    private void setProvider(Provider provider) {
-        this.provider = provider;
     }
 
     public String getRefId() {
         return refId;
     }
 
-    private void setRefId(String refId) {
-        this.refId = refId;
-    }
-
     public String getRefUrl() {
         return refUrl;
-    }
-
-    private void setRefUrl(String refUrl) {
-        this.refUrl = refUrl;
     }
 
     public int getHits() {
@@ -79,23 +67,11 @@ public class Referral {
 
         // required parameter
         private Provider provider;
-
-        // optional parameters
-        private String refId;
         private String refUrl;
 
-        public ReferralBuilder(Provider provider) {
+        public ReferralBuilder(Provider provider, String refUrl) {
             this.provider = provider;
-        }
-
-        public ReferralBuilder withReferralId(String refId) {
-            this.refId = refId;
-            return this;
-        }
-
-        public ReferralBuilder withReferralUrl(String refUrl) {
             this.refUrl = refUrl;
-            return this;
         }
 
         public Referral build() {
@@ -104,12 +80,12 @@ public class Referral {
 
     }
 
-    public static String sanitizeUrl(String url) {
-        if (!url.matches("^(http|https)://.*$")){
-            return "http://" + url;
-        } else {
-            return url;
+    private String extractRefIdFromValidRefUrl(String refUrl) {
+        Matcher refUrlMatcher = provider.getRefUrlMatcher(refUrl);
+        if (refUrlMatcher.matches()) {
+            return refUrlMatcher.group(1);
         }
+        return null;
     }
 
 }

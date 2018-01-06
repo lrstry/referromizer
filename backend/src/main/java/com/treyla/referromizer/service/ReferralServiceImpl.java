@@ -2,6 +2,7 @@ package com.treyla.referromizer.service;
 
 import com.treyla.referromizer.domain.Referral;
 import com.treyla.referromizer.repository.ReferralRepository;
+import com.treyla.referromizer.util.Sanitizer;
 import org.apache.commons.lang3.Validate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -62,8 +63,7 @@ public class ReferralServiceImpl implements ReferralService {
     public boolean refUrlExists(String refUrl) {
         Validate.notNull(refUrl);
         Validate.notEmpty(refUrl);
-        String urlInDatabase = Referral.sanitizeUrl(refUrl);
-        return referralRepository.existsByRefUrl(urlInDatabase);
+        return referralRepository.existsByRefUrl(refUrl);
     }
 
 }
