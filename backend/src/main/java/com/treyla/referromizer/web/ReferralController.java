@@ -42,11 +42,13 @@ public class ReferralController {
 
         refUrl = Sanitizer.sanitizeUrl(refUrl);
 
+        String refId = Referral.extractRefIdFromValidRefUrl(refUrl, provider);
+
         if (!provider.isRefUrlValid(refUrl)) {
             return new ResponseEntity<>("Referral Url is invalid.", HttpStatus.BAD_REQUEST);
         }
 
-        if (referralService.refUrlExists(refUrl)) {
+        if (referralService.refIdExists(refId)) {
             return new ResponseEntity<>("Referral already existing.", HttpStatus.BAD_REQUEST);
         }
 

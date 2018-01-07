@@ -29,7 +29,7 @@ public class Referral {
     public Referral(ReferralBuilder builder) {
         this.provider = builder.provider;
         this.refUrl = builder.refUrl;
-        this.refId = extractRefIdFromValidRefUrl(this.refUrl);
+        this.refId = extractRefIdFromValidRefUrl(this.refUrl, this.provider);
     }
 
     public static ReferralBuilder builder(Provider provider, String refUrl) {
@@ -60,7 +60,7 @@ public class Referral {
         this.hits = Math.incrementExact(this.hits);
     }
 
-    private String extractRefIdFromValidRefUrl(String refUrl) {
+    public static String extractRefIdFromValidRefUrl(String refUrl, Provider provider) {
         Matcher refUrlMatcher = provider.getRefUrlMatcher(refUrl);
         if (refUrlMatcher.matches()) {
             return refUrlMatcher.group(1);
