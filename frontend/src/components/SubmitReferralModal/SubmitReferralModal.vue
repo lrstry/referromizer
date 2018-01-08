@@ -73,7 +73,6 @@ export default {
 
   computed: {
     isValidProviderSelected: function() {
-      // Vee Validator not enabled for validating Select-directive
       return this.selectedProvider.id !== undefined;
     },
     isValidRefUrlGiven: function() {
