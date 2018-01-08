@@ -9,7 +9,8 @@
       </b-container>
     </div>
     <div>
-      <v-submit-referral-modal v-on:closeModal="closeModal()" :show="isSubmitReferralModalVisible"></v-submit-referral-modal>
+      <v-submit-referral-modal v-on:closeModal="closeSubmitReferralModal()" :show="isSubmitReferralModalVisible"></v-submit-referral-modal>
+      <v-donate-modal v-on:closeModal="closeDonateModal()" :show="isDonateModalVisible"></v-donate-modal>
     </div>
     <b-container id="content">
       <b-row>
@@ -27,6 +28,9 @@
       <b-nav-item href="https://github.com/treyla/referromizer" target="_blank">
         <img src="./assets/img/GitHub-Mark-120px-plus.png">
       </b-nav-item>
+      <b-button size="sm" variant="success" @click="onDonatePress">
+        Donate
+      </b-button>
     </b-navbar>
   </div>
 </template>
@@ -35,6 +39,7 @@
 import Provider from "./components/Provider/";
 import Referral from "./components/Referral/";
 import SubmitReferralModal from "./components/SubmitReferralModal/";
+import DonateModal from "./components/DonateModal/";
 
 export default {
   name: "app",
@@ -42,22 +47,32 @@ export default {
   components: {
     "v-provider": Provider,
     "v-referral": Referral,
-    "v-submit-referral-modal": SubmitReferralModal
+    "v-submit-referral-modal": SubmitReferralModal,
+    "v-donate-modal": DonateModal
   },
 
   data() {
     return {
       isSubmitReferralModalVisible: false,
+      isDonateModalVisible: false,
       selectedProviderId: ""
     };
   },
 
   methods: {
-    closeModal() {
+    closeSubmitReferralModal() {
       this.isSubmitReferralModalVisible = false;
+    },
+    closeDonateModal() {
+      this.isDonateModalVisible = false;
     },
     changeSelectedProvider(newSelectedProviderId) {
       this.selectedProviderId = newSelectedProviderId;
+    },
+    onDonatePress() {
+      if (!this.isDonateModalVisible) {
+        this.isDonateModalVisible = true;
+      }
     }
   }
 };
