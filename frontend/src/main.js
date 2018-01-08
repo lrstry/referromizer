@@ -13,7 +13,7 @@ import 'vue-awesome/icons'
 Vue.use(BootstrapVue)
 Vue.use(VueClipboard)
 Vue.use(VeeValidate)
-Vue.use(Toasted, { duration: "3500", position: "bottom-right" })
+Vue.use(Toasted, { duration: "2500", position: "bottom-right" })
 
 Vue.component('icon', Icon)
 
