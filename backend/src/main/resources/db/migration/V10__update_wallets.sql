@@ -1,0 +1,9 @@
+UPDATE wallet
+    SET address='LLMDwzUUvzg1CF5b83c2bCRBK4D1BqMdrQ'
+    WHERE name='Litecoin';
+UPDATE wallet
+    SET address='1421LDo1G7Yts3RZAuEJxuEP5HgixCX4yt'
+    WHERE name='Bitcoin';
+UPDATE wallet
+    SET address='0x3a4ff6d73729254b68c5f20d71301e46ade7c461'
+    WHERE name='Ethereum';
