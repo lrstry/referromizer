@@ -183,11 +183,10 @@ export default {
 
 <style lang="scss" scoped>
 #hitsBadge {
-  border-right: none;
 }
 
 #referralInput {
-  border-left: none;
+  border: none;
   text-align: center;
 }
 

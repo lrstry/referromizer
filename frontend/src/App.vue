@@ -24,14 +24,16 @@
         </b-col>
       </b-row>
     </b-container>
-    <b-navbar id="footerBar" fixed="bottom">
-      <b-nav-item href="https://github.com/treyla/referromizer" target="_blank">
-        <img src="./assets/img/GitHub-Mark-120px-plus.png">
-      </b-nav-item>
-      <b-button size="sm" variant="success" @click="onDonatePress">
-        Donate
-      </b-button>
-    </b-navbar>
+    <b-container id="footerBar">
+      <b-button-group>
+        <b-button size="sm" href="https://github.com/treyla/referromizer" target="_blank">
+          GitHub
+        </b-button>
+        <b-button size="sm" variant="success" @click="onDonatePress">
+          Donate
+        </b-button>
+        </b-button-group>
+    </b-container>
   </div>
 </template>
 
@@ -159,8 +161,13 @@ body {
 }
 
 #footerBar {
-  z-index: 0;
-  overflow: hidden;
+  position: fixed;
+  padding: 2rem;
+  margin-bottom: 1rem;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  text-align: center;
 }
 
 .fixed-bottom li {
