@@ -19,4 +19,5 @@ public interface ReferralService {
     boolean refIdExists(String refId);
 
     boolean refUrlExists(String refUrl);
+
 }
