@@ -186,8 +186,7 @@ export default {
         })
         .then(response => {
           vm.$session.set("alreadyVotedForProviderRequest", true);
-          vm.requestedProviders.find(x => x.id === response.data.id).votes =
-            response.data.votes;
+          vm.fetchAllProviderRequests();
           this.$toasted.success("Provider Request successfully upvoted.");
         })
         .catch(e => {
@@ -196,21 +195,24 @@ export default {
         });
     },
     createNewProviderRequest(providerName, exampleReferralUrl) {
+      const vm = this;
       axios
         .post("/api/providers/requests", {
           name: providerName,
           exampleReferralUrl: exampleReferralUrl
         })
         .then(response => {
+          vm.fetchAllProviderRequests();
+          vm.requestedProvider = {};
           this.$toasted.success("Provider Request successfully created.");
         })
         .catch(e => {
+          vm.requestedProvider = {};
           this.apiErrors.push(e);
           this.$toasted.error(e.response.data);
         });
     },
     onRequestProvider() {
-      this.showModal = false;
       this.createNewProviderRequest(
         this.requestedProvider.name,
         this.requestedProvider.exampleReferralUrl

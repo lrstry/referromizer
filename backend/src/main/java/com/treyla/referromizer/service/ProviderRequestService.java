@@ -16,4 +16,7 @@ public interface ProviderRequestService {
     ProviderRequest newProviderRequest(ProviderRequestBuilder builder);
 
     ProviderRequest upvoteProviderRequest(UUID id);
+
+    boolean nameExists(String name);
+
 }

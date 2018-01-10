@@ -26,4 +26,11 @@ public class ProviderServiceImpl implements ProviderService {
         return (List<Provider>) providerRepository.findAll();
     }
 
+    @Override
+    public boolean nameExists(String name) {
+        Validate.notNull(name);
+        Validate.notEmpty(name);
+        return providerRepository.existsByName(name);
+    }
+
 }

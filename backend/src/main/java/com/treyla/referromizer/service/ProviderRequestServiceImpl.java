@@ -42,4 +42,11 @@ public class ProviderRequestServiceImpl implements ProviderRequestService {
         Validate.notNull(id);
         return providerRequestRepository.findById(id);
     }
+
+    @Override
+    public boolean nameExists(String name) {
+        Validate.notNull(name);
+        Validate.notEmpty(name);
+        return providerRequestRepository.existsByName(name);
+    }
 }

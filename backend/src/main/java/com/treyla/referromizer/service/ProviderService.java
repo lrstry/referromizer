@@ -11,4 +11,6 @@ public interface ProviderService {
 
     List<Provider> fetchAllProviders();
 
+    boolean nameExists(String name);
+
 }

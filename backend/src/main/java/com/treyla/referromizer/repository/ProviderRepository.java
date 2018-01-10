@@ -7,4 +7,6 @@ import java.util.UUID;
 
 public interface ProviderRepository extends CrudRepository<Provider, UUID> {
 
+    boolean existsByName(String name);
+
 }

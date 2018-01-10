@@ -46,6 +46,14 @@ public class ProviderController {
         String exampleReferralUrl = providerRequestBody.getExampleReferralUrl();
         Validate.notEmpty(exampleReferralUrl);
 
+        if (providerService.nameExists(providerName)) {
+            return new ResponseEntity<>("Provider already existing.", HttpStatus.BAD_REQUEST);
+        }
+
+        if (providerRequestService.nameExists(providerName)) {
+            return new ResponseEntity<>("Provider Request already existing.", HttpStatus.BAD_REQUEST);
+        }
+
         newProviderRequestBuilder = ProviderRequest.builder(providerName, exampleReferralUrl);
         ProviderRequest newProviderRequest = providerRequestService.newProviderRequest(newProviderRequestBuilder);
 
