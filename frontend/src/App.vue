@@ -10,6 +10,7 @@
     </div>
     <div>
       <v-submit-referral-modal v-on:closeModal="closeSubmitReferralModal()" :show="isSubmitReferralModalVisible"></v-submit-referral-modal>
+      <v-request-provider-modal v-on:closeModal="closeRequestProviderModal()" :show="isRequestProviderModalVisible"></v-request-provider-modal>
       <v-donate-modal v-on:closeModal="closeDonateModal()" :show="isDonateModalVisible"></v-donate-modal>
     </div>
     <b-container id="content">
@@ -29,6 +30,9 @@
         <b-button size="sm" href="https://github.com/treyla/referromizer" target="_blank">
           GitHub
         </b-button>
+        <b-button size="sm" variant="warning" @click="onRequestProviderPress">
+          Request Provider
+        </b-button>
         <b-button size="sm" variant="success" @click="onDonatePress">
           Donate
         </b-button>
@@ -42,6 +46,7 @@ import Provider from "./components/Provider/";
 import Referral from "./components/Referral/";
 import SubmitReferralModal from "./components/SubmitReferralModal/";
 import DonateModal from "./components/DonateModal/";
+import RequestProviderModal from "./components/RequestProviderModal/";
 
 export default {
   name: "app",
@@ -50,13 +55,15 @@ export default {
     "v-provider": Provider,
     "v-referral": Referral,
     "v-submit-referral-modal": SubmitReferralModal,
-    "v-donate-modal": DonateModal
+    "v-donate-modal": DonateModal,
+    "v-request-provider-modal": RequestProviderModal
   },
 
   data() {
     return {
       isSubmitReferralModalVisible: false,
       isDonateModalVisible: false,
+      isRequestProviderModalVisible: false,
       selectedProviderId: ""
     };
   },
@@ -64,6 +71,9 @@ export default {
   methods: {
     closeSubmitReferralModal() {
       this.isSubmitReferralModalVisible = false;
+    },
+    closeRequestProviderModal() {
+      this.isRequestProviderModalVisible = false;
     },
     closeDonateModal() {
       this.isDonateModalVisible = false;
@@ -74,6 +84,11 @@ export default {
     onDonatePress() {
       if (!this.isDonateModalVisible) {
         this.isDonateModalVisible = true;
+      }
+    },
+    onRequestProviderPress() {
+      if (!this.isRequestProviderModalVisible) {
+        this.isRequestProviderModalVisible = true;
       }
     }
   }
@@ -195,5 +210,10 @@ body {
   .hide-on-landscape {
     display: none;
   }
+}
+
+.twitter-btn {
+  background-color: #4694da;
+  border-color: #4694da;
 }
 </style>

@@ -1,0 +1,1 @@
+ALTER TABLE provider_request RENAME COLUMN upvotes TO votes;
