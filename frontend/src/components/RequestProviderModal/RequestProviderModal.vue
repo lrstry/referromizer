@@ -168,7 +168,7 @@ export default {
     },
     isUpvoteEnabledForProviderRequest(providerRequest) {
       if (
-        providerRequest.status === "Approved" ||
+        providerRequest.status === "Active" ||
         providerRequest.status === "Declined"
       ) {
         return false;
