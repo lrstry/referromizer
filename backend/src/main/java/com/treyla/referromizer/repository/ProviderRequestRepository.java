@@ -12,4 +12,6 @@ public interface ProviderRequestRepository extends CrudRepository<ProviderReques
 
     ProviderRequest findById(UUID id);
 
+    boolean existsByName(String name);
+
 }
