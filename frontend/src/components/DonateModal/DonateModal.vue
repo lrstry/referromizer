@@ -85,10 +85,6 @@ export default {
   },
 
   methods: {
-    onCancelNewReferral(event) {
-      this.showModal = false;
-      this.selectedWallet = {};
-    },
     onClosedDonateModal() {
       this.$emit("closeModal");
       this.showModal = false;
