@@ -5,6 +5,7 @@ import com.treyla.referromizer.domain.Referral;
 import com.treyla.referromizer.service.ProviderService;
 import com.treyla.referromizer.service.ReferralService;
 import com.treyla.referromizer.util.Sanitizer;
+import com.treyla.referromizer.util.Validator;
 import org.apache.commons.lang3.Validate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -44,7 +45,7 @@ public class ReferralController {
 
         String refId = Referral.extractRefIdFromValidRefUrl(refUrl, provider);
 
-        if (!provider.isRefUrlValid(refUrl)) {
+        if (!Validator.isValidUrl(refUrl, provider.getRefUrlRegex())) {
             return new ResponseEntity<>("Referral Url is invalid.", HttpStatus.BAD_REQUEST);
         }
 

@@ -47,8 +47,4 @@ public class Provider {
         return pattern.matcher(refUrl);
     }
 
-    public boolean isRefUrlValid(String refUrl) {
-        return getRefUrlMatcher(refUrl).matches();
-    }
-
 }

@@ -4,6 +4,8 @@ import com.treyla.referromizer.domain.Provider;
 import com.treyla.referromizer.domain.ProviderRequest;
 import com.treyla.referromizer.service.ProviderRequestService;
 import com.treyla.referromizer.service.ProviderService;
+import com.treyla.referromizer.util.Sanitizer;
+import com.treyla.referromizer.util.Validator;
 import org.apache.commons.lang3.Validate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -45,6 +47,17 @@ public class ProviderController {
         Validate.notEmpty(providerName);
         String exampleReferralUrl = providerRequestBody.getExampleReferralUrl();
         Validate.notEmpty(exampleReferralUrl);
+
+        providerName = Sanitizer.sanitizeRequestedProviderName(providerName);
+        exampleReferralUrl = Sanitizer.sanitizeUrl(exampleReferralUrl);
+
+        if (!Validator.isValidProviderName(providerName)) {
+            return new ResponseEntity<>("Requested Provider Name is invalid.", HttpStatus.BAD_REQUEST);
+        }
+
+        if (!Validator.isValidUrl(exampleReferralUrl)) {
+            return new ResponseEntity<>("Example Referral Url for Requested Provider is invalid.", HttpStatus.BAD_REQUEST);
+        }
 
         if (providerService.nameExists(providerName)) {
             return new ResponseEntity<>("Provider already existing.", HttpStatus.BAD_REQUEST);

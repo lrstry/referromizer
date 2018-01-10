@@ -14,4 +14,8 @@ public class Sanitizer {
 
     }
 
+    public static String sanitizeRequestedProviderName(String name) {
+        return name.trim();
+    }
+
 }
