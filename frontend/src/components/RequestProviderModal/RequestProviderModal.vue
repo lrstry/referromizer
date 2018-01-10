@@ -44,7 +44,7 @@
           :fields="requestedProvidersTableOptions.fields">
           <template slot="actions" slot-scope="item">
             <!-- We use @click.stop here to prevent a 'row-clicked' event from also happening -->
-            <b-btn variant="success" size="sm" @click.stop="upvote(item.item.id)" :disabled="$session.get('alreadyVotedForProviderRequest')" v-if="isUpvoteEnabledForProviderRequest(item.item)">+1</b-btn>
+            <b-btn variant="success" size="sm" @click.stop="upvote(item.item.id)" :disabled="$session.get('alreadyVotedForProviderRequest') || !isUpvoteEnabledForProviderRequest(item.item)">+1</b-btn>
           </template>
           <template slot="table-caption">
             Every user is only allowed to vote once.
