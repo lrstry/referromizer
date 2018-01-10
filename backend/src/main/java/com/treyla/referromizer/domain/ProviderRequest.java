@@ -20,7 +20,7 @@ public class ProviderRequest {
     @Enumerated(EnumType.STRING)
     @Column(length = 10)
     private ProviderRequestStatus status;
-    private int upvotes;
+    private int votes;
 
     ProviderRequest() {
     }
@@ -29,7 +29,7 @@ public class ProviderRequest {
         this.name = builder.name;
         this.exampleReferralUrl = builder.exampleReferralUrl;
         this.status = ProviderRequestStatus.REQUESTED;
-        this.upvotes = Math.incrementExact(this.upvotes);
+        this.votes = Math.incrementExact(this.votes);
     }
 
     public static ProviderRequestBuilder builder(String name, String exampleReferralUrl) {
@@ -48,8 +48,24 @@ public class ProviderRequest {
         return exampleReferralUrl;
     }
 
-    public int getUpvotes() {
-        return upvotes;
+    public int getVotes() {
+        return votes;
+    }
+
+    public String getStatus() {
+        switch (this.status) {
+            case REQUESTED:
+                return "Requested";
+            case ACTIVE:
+                return "Active";
+            case DECLINED:
+                return "Declined";
+        }
+        return null;
+    }
+
+    public void upvote() {
+        this.votes = Math.incrementExact(this.votes);
     }
 
     public static final class ProviderRequestBuilder {

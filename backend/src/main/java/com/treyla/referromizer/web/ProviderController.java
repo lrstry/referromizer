@@ -53,4 +53,14 @@ public class ProviderController {
 
     }
 
+    @RequestMapping(value = "/requests/upvote", method = RequestMethod.POST, produces = "application/json; charset=utf-8")
+    ResponseEntity<Object> upvoteProviderRequest(@RequestBody ProviderRequest providerRequestBody) {
+
+        Validate.notNull(providerRequestBody.getId());
+        ProviderRequest updatedProviderRequest = providerRequestService.upvoteProviderRequest(providerRequestBody.getId());
+
+        return new ResponseEntity<>(updatedProviderRequest, HttpStatus.OK);
+
+    }
+
 }

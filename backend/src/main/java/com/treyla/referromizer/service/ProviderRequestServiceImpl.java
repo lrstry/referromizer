@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.UUID;
 
 import static com.treyla.referromizer.domain.ProviderRequest.ProviderRequestBuilder;
 
@@ -18,12 +19,27 @@ public class ProviderRequestServiceImpl implements ProviderRequestService {
 
     @Override
     public List<ProviderRequest> fetchAllProviderRequests() {
-        return (List<ProviderRequest>) providerRequestRepository.findAll();
+        return providerRequestRepository.findAllByOrderByVotesDesc();
     }
 
     @Override
     public ProviderRequest newProviderRequest(ProviderRequestBuilder builder) {
         Validate.notNull(builder);
         return providerRequestRepository.save(builder.build());
+    }
+
+    @Override
+    public ProviderRequest upvoteProviderRequest(UUID id) {
+        Validate.notNull(id);
+        ProviderRequest providerRequest = providerRequestRepository.findById(id);
+        Validate.notNull(providerRequest);
+        providerRequest.upvote();
+        return providerRequestRepository.save(providerRequest);
+    }
+
+    @Override
+    public ProviderRequest fetchProviderRequestById(UUID id) {
+        Validate.notNull(id);
+        return providerRequestRepository.findById(id);
     }
 }
