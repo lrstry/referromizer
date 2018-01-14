@@ -20,6 +20,5 @@ Vue.use(VueSession)
 Vue.component('icon', Icon)
 
 new Vue({ // eslint-disable-line no-new
-  el: '#app',
   render: h => h(App)
-})
+}).$mount('#app')

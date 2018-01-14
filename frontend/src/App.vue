@@ -4,7 +4,7 @@
       <b-container id="referromizerLogo">
         <img src="./assets/img/logo.png">
         <div class="hide-on-landscape">
-          <h4>Application for sharing and retrieving random referral links to various services.</h4>
+          <h1>Application for sharing and retrieving random referral links to various services.</h1>
         </div>
       </b-container>
     </div>
@@ -145,6 +145,10 @@ body {
       endColorstr="#011f31",
       GradientType=0
     );
+}
+
+h1 {
+  font-size: 1.5rem;
 }
 
 #referromizerLogo {
