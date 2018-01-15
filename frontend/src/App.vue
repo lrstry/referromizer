@@ -4,7 +4,7 @@
       <b-container id="referromizerLogo">
         <img src="./assets/img/logo.png">
         <div class="hide-on-landscape">
-          <h1>Application for sharing and retrieving random referral links to various services.</h1>
+          <h4>Application for sharing and retrieving random referral links to various services.</h4>
         </div>
       </b-container>
     </div>
