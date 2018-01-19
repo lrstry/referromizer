@@ -46,4 +46,4 @@ VALUES (
     '^[a-zA-Z0-9]{6}$',
     E'^(?:http:\\/\\/|https:\\/\\/){0,1}(?:www.){0,1}(?:bitmex.com\\/register\\/)([a-zA-Z0-9]{6})$');
 
-UPDATE provider_request SET status='ACTIVE' WHERE name='Quadrigacx';
+UPDATE provider_request SET status='ACTIVE' WHERE name='Bitmex';
