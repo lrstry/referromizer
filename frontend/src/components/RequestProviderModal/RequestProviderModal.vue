@@ -44,10 +44,10 @@
           :fields="requestedProvidersTableOptions.fields">
           <template slot="actions" slot-scope="item">
             <!-- We use @click.stop here to prevent a 'row-clicked' event from also happening -->
-            <b-btn variant="success" size="sm" @click.stop="upvote(item.item.id)" :disabled="$session.get('alreadyVotedForProviderRequest') || !isUpvoteEnabledForProviderRequest(item.item)">+1</b-btn>
+            <b-btn variant="success" size="sm" @click.stop="upvote(item.item.id)" :disabled="isMaximumVotesPerSessionReached">+1</b-btn>
           </template>
           <template slot="table-caption">
-            Every user is only allowed to vote once.
+            Every user is allowed to distribute 10 votes per session.
           </template>
         </b-table>
         <div class="justify-content-center row">
@@ -62,8 +62,8 @@
 </template>
 
 <script>
-// import { axios } from "../../config/http-commons";
-import axios from "axios";
+import { axios } from "../../config/http-commons";
+//import axios from "axios";
 
 export default {
   props: ["show"],
@@ -73,6 +73,9 @@ export default {
       showModal: false,
       requestedProviders: [],
       requestedProvider: {},
+      maximumVotesPerSession: 10,
+      isMaximumVotesPerSessionReached:
+        this.$session.set("maximumVotesReached") || false,
       requestedProvidersTableOptions: {
         fields: [
           {
@@ -176,7 +179,10 @@ export default {
       return true;
     },
     upvote(requestedProviderId) {
-      if (this.$session.get("alreadyVotedForProviderRequest")) {
+      var sessionVotes = this.$session.get("votes");
+      if (sessionVotes >= this.maximumVotesPerSession) {
+        this.$session.set("maximumVotesReached", true);
+        this.isMaximumVotesPerSessionReached = true;
         return;
       }
       const vm = this;
@@ -185,7 +191,7 @@ export default {
           id: requestedProviderId
         })
         .then(response => {
-          vm.$session.set("alreadyVotedForProviderRequest", true);
+          vm.$session.set("votes", vm.$session.get("votes") + 1);
           vm.fetchAllProviderRequests();
           this.$toasted.success("Provider Request successfully upvoted.");
         })
