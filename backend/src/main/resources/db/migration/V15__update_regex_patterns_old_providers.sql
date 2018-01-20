@@ -1,0 +1,12 @@
+UPDATE provider
+    SET ref_url_regex='^(?:http:\/\/|https:\/\/){0,1}(?:www.){0,1}(?:binance.com\/\?ref=)([0-9]{8})$'
+    WHERE name='Binance';
+UPDATE provider
+    SET ref_url_regex='^(?:http:\/\/|https:\/\/){0,1}(?:www.){0,1}(?:coinbase.com\/join\/)([a-z0-9]{24})$'
+    WHERE name='Coinbase';
+UPDATE provider
+    SET ref_url_regex='^(?:http:\/\/|https:\/\/){0,1}(?:www.){0,1}(?:sso.){0,1}(?:coss.io\/api\/invite\/)([A-Z0-9]{10})$'
+    WHERE name='COSS.IO';
+UPDATE provider
+    SET ref_url_regex='^(?:http:\/\/|https:\/\/){0,1}(?:www.){0,1}(?:coinspot.com.au\/\?affiliate=)([A-Z0-9]{5})$'
+    WHERE name='Coinspot';
