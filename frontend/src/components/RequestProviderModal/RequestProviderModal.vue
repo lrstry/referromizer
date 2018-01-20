@@ -62,8 +62,8 @@
 </template>
 
 <script>
-import { axios } from "../../config/http-commons";
-//import axios from "axios";
+// import { axios } from "../../config/http-commons";
+import axios from "axios";
 
 export default {
   props: ["show"],
