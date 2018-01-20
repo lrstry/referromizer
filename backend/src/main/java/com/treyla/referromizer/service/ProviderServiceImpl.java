@@ -23,7 +23,7 @@ public class ProviderServiceImpl implements ProviderService {
 
     @Override
     public List<Provider> fetchAllProviders() {
-        return (List<Provider>) providerRepository.findAll();
+        return providerRepository.findAllByOrderByNameAsc();
     }
 
     @Override
