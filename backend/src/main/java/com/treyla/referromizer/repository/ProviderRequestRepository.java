@@ -8,7 +8,7 @@ import java.util.UUID;
 
 public interface ProviderRequestRepository extends CrudRepository<ProviderRequest, UUID> {
 
-    List<ProviderRequest> findAllByOrderByVotesDesc();
+    List<ProviderRequest> findAllByOrderByStatusAscVotesDesc();
 
     ProviderRequest findById(UUID id);
 

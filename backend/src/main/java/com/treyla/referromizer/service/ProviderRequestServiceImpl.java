@@ -19,7 +19,7 @@ public class ProviderRequestServiceImpl implements ProviderRequestService {
 
     @Override
     public List<ProviderRequest> fetchAllProviderRequests() {
-        return providerRequestRepository.findAllByOrderByVotesDesc();
+        return providerRequestRepository.findAllByOrderByStatusAscVotesDesc();
     }
 
     @Override
