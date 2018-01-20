@@ -44,7 +44,7 @@
           :fields="requestedProvidersTableOptions.fields">
           <template slot="actions" slot-scope="item">
             <!-- We use @click.stop here to prevent a 'row-clicked' event from also happening -->
-            <b-btn variant="success" size="sm" @click.stop="upvote(item.item.id)" :disabled="isMaximumVotesPerSessionReached">+1</b-btn>
+            <b-btn variant="success" size="sm" @click.stop="upvote(item.item.id)" :disabled="isMaximumVotesPerSessionReached || !isUpvoteEnabledForProviderRequest(item.item)">+1</b-btn>
           </template>
           <template slot="table-caption">
             Every user is allowed to distribute 10 votes per session.
