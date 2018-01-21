@@ -6,6 +6,9 @@ import com.treyla.referromizer.service.ProviderRequestService;
 import com.treyla.referromizer.service.ProviderService;
 import com.treyla.referromizer.util.Sanitizer;
 import com.treyla.referromizer.util.Validator;
+import net.gpedro.integrations.slack.SlackApi;
+import net.gpedro.integrations.slack.SlackException;
+import net.gpedro.integrations.slack.SlackMessage;
 import org.apache.commons.lang3.Validate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -69,6 +72,17 @@ public class ProviderController {
 
         newProviderRequestBuilder = ProviderRequest.builder(providerName, exampleReferralUrl);
         ProviderRequest newProviderRequest = providerRequestService.newProviderRequest(newProviderRequestBuilder);
+
+        try {
+            SlackApi slackApi = new SlackApi("https://hooks.slack.com/services/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");
+            SlackMessage message = new SlackMessage();
+            message.setUsername("ReferromizerBot");
+            message.setText("A new provider request has been submitted: " + newProviderRequest.getName() + ", " + newProviderRequest.getExampleReferralUrl());
+            message.setIcon(":ghost:");
+            slackApi.call(message);
+        } catch (SlackException e) {
+            // Log
+        }
 
         return new ResponseEntity<>(newProviderRequest, HttpStatus.OK);
 
