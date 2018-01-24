@@ -112,6 +112,7 @@ export default {
     show: function(newVal) {
       this.showModal = newVal;
       if (this.showModal) {
+        this.requestedProvider = {};
         this.fetchAllProviderRequests();
       } else {
         this.requestedProvider = {};

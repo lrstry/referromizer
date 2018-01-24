@@ -182,9 +182,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-#hitsBadge {
-}
-
 #referralInput {
   border: none;
   text-align: center;
