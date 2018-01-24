@@ -6,6 +6,9 @@ import com.treyla.referromizer.service.ProviderService;
 import com.treyla.referromizer.service.ReferralService;
 import com.treyla.referromizer.util.Sanitizer;
 import com.treyla.referromizer.util.Validator;
+import net.gpedro.integrations.slack.SlackApi;
+import net.gpedro.integrations.slack.SlackException;
+import net.gpedro.integrations.slack.SlackMessage;
 import org.apache.commons.lang3.Validate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -55,6 +58,20 @@ public class ReferralController {
 
         newReferralBuilder = Referral.builder(provider, refUrl);
         Referral newReferral = referralService.newReferral(newReferralBuilder);
+
+        try {
+            SlackApi slackApi = new SlackApi("https://hooks.slack.com/services/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");
+            SlackMessage message = new SlackMessage();
+            message.setUsername("ReferromizerBot");
+            message.setText("A new referral has been submitted: "
+                    + newReferral.getProvider().getName() + ", "
+                    + newReferral.getRefId() + ", "
+                    + newReferral.getRefUrl());
+            message.setIcon(":ghost:");
+            slackApi.call(message);
+        } catch (SlackException e) {
+            // Log
+        }
 
         return new ResponseEntity<>(newReferral, HttpStatus.OK);
 
