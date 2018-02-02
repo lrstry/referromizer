@@ -30,7 +30,7 @@ public class ProviderServiceImpl implements ProviderService {
     public boolean nameExists(String name) {
         Validate.notNull(name);
         Validate.notEmpty(name);
-        return providerRepository.existsByName(name);
+        return providerRepository.existsByNameIgnoreCase(name);
     }
 
 }

@@ -10,6 +10,6 @@ public interface ProviderRepository extends CrudRepository<Provider, UUID> {
 
     List<Provider> findAllByOrderByNameAsc();
 
-    boolean existsByName(String name);
+    boolean existsByNameIgnoreCase(String name);
 
 }
