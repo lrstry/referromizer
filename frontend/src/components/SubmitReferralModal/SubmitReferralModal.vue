@@ -105,8 +105,6 @@ export default {
     onSubmitNewReferral(event) {
       if (this.isSubmitReferralFormValid && this.isValidRefUrlGiven) {
         this.showModal = false;
-        this.selectedProvider = {};
-        this.refUrl = "";
         this.createNewReferral(this.selectedProvider.id, this.refUrl);
       } else {
         this.showModal = true;
@@ -119,6 +117,8 @@ export default {
     },
     onClosedSubmitReferralModal() {
       this.$emit("closeModal");
+      this.selectedProvider = {};
+      this.refUrl = "";
       this.showModal = false;
     }
   },
