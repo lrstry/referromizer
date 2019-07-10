@@ -9,4 +9,5 @@
 </p>
 <p align="center">
   https://referromizer.herokuapp.com/
+  https://gitlab.com/lrstry/referromizer
 </p>
