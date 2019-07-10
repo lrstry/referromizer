@@ -8,5 +8,4 @@
   <b>Spread the word.</b>
 </p>
 <p align="center">https://referromizer.herokuapp.com/</p>
-<p align="center">https://gitlab.com/lrstry/referromizer/</p>
   
