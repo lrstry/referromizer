@@ -8,4 +8,4 @@
   <b>Spread the word.</b>
 </p>
 <p align="center">https://referromizer.herokuapp.com/</p>
-  
+<p align="center">Deployed on Heroku, using GitLab CI.</p>
