@@ -7,7 +7,6 @@
   Referromizer offers you a simple platform to share your's and fetch any.<br>
   <b>Spread the word.</b>
 </p>
-<p align="center">
-  https://referromizer.herokuapp.com/
-  https://gitlab.com/lrstry/referromizer
-</p>
+<p align="center">https://referromizer.herokuapp.com/</p>
+<p align="center">https://gitlab.com/lrstry/referromizer/</p>
+  
