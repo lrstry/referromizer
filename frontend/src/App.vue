@@ -27,7 +27,7 @@
     </b-container>
     <b-container id="footerBar">
       <b-button-group>
-        <b-button size="sm" href="https://github.com/treyla/referromizer" target="_blank">
+        <b-button size="sm" href="https://github.com/lrstry/referromizer" target="_blank">
           GitHub
         </b-button>
         <b-button size="sm" variant="warning" @click="onRequestProviderPress">

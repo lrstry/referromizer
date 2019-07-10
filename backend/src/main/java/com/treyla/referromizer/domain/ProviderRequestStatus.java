@@ -1,4 +1,4 @@
-package com.treyla.referromizer.domain;
+package com.lrstry.referromizer.domain;
 
 public enum ProviderRequestStatus {
 

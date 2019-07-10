@@ -1,7 +1,7 @@
-package com.treyla.referromizer.service;
+package com.lrstry.referromizer.service;
 
-import com.treyla.referromizer.domain.Provider;
-import com.treyla.referromizer.repository.ProviderRepository;
+import com.lrstry.referromizer.domain.Provider;
+import com.lrstry.referromizer.repository.ProviderRepository;
 import org.apache.commons.lang3.Validate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

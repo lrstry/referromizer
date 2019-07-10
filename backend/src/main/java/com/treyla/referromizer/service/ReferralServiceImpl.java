@@ -1,7 +1,7 @@
-package com.treyla.referromizer.service;
+package com.lrstry.referromizer.service;
 
-import com.treyla.referromizer.domain.Referral;
-import com.treyla.referromizer.repository.ReferralRepository;
+import com.lrstry.referromizer.domain.Referral;
+import com.lrstry.referromizer.repository.ReferralRepository;
 import org.apache.commons.lang3.Validate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.UUID;
 import java.util.concurrent.ThreadLocalRandom;
 
-import static com.treyla.referromizer.domain.Referral.ReferralBuilder;
+import static com.lrstry.referromizer.domain.Referral.ReferralBuilder;
 
 @Service
 public class ReferralServiceImpl implements ReferralService {

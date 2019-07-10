@@ -1,11 +1,11 @@
-package com.treyla.referromizer.web;
+package com.lrstry.referromizer.web;
 
-import com.treyla.referromizer.domain.Provider;
-import com.treyla.referromizer.domain.ProviderRequest;
-import com.treyla.referromizer.service.ProviderRequestService;
-import com.treyla.referromizer.service.ProviderService;
-import com.treyla.referromizer.util.Sanitizer;
-import com.treyla.referromizer.util.Validator;
+import com.lrstry.referromizer.domain.Provider;
+import com.lrstry.referromizer.domain.ProviderRequest;
+import com.lrstry.referromizer.service.ProviderRequestService;
+import com.lrstry.referromizer.service.ProviderService;
+import com.lrstry.referromizer.util.Sanitizer;
+import com.lrstry.referromizer.util.Validator;
 import net.gpedro.integrations.slack.SlackApi;
 import net.gpedro.integrations.slack.SlackException;
 import net.gpedro.integrations.slack.SlackMessage;

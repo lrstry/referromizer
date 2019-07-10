@@ -1,11 +1,11 @@
-package com.treyla.referromizer.web;
+package com.lrstry.referromizer.web;
 
-import com.treyla.referromizer.domain.Provider;
-import com.treyla.referromizer.domain.Referral;
-import com.treyla.referromizer.service.ProviderService;
-import com.treyla.referromizer.service.ReferralService;
-import com.treyla.referromizer.util.Sanitizer;
-import com.treyla.referromizer.util.Validator;
+import com.lrstry.referromizer.domain.Provider;
+import com.lrstry.referromizer.domain.Referral;
+import com.lrstry.referromizer.service.ProviderService;
+import com.lrstry.referromizer.service.ReferralService;
+import com.lrstry.referromizer.util.Sanitizer;
+import com.lrstry.referromizer.util.Validator;
 import net.gpedro.integrations.slack.SlackApi;
 import net.gpedro.integrations.slack.SlackException;
 import net.gpedro.integrations.slack.SlackMessage;
@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Objects;
 import java.util.UUID;
 
-import static com.treyla.referromizer.domain.Referral.ReferralBuilder;
+import static com.lrstry.referromizer.domain.Referral.ReferralBuilder;
 
 @RestController
 @RequestMapping("/api/referrals")

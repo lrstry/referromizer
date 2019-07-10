@@ -1,7 +1,7 @@
-package com.treyla.referromizer.service;
+package com.lrstry.referromizer.service;
 
-import com.treyla.referromizer.domain.ProviderRequest;
-import com.treyla.referromizer.repository.ProviderRequestRepository;
+import com.lrstry.referromizer.domain.ProviderRequest;
+import com.lrstry.referromizer.repository.ProviderRequestRepository;
 import org.apache.commons.lang3.Validate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.UUID;
 
-import static com.treyla.referromizer.domain.ProviderRequest.ProviderRequestBuilder;
+import static com.lrstry.referromizer.domain.ProviderRequest.ProviderRequestBuilder;
 
 @Service
 public class ProviderRequestServiceImpl implements ProviderRequestService {

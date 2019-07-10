@@ -1,6 +1,6 @@
-package com.treyla.referromizer.repository;
+package com.lrstry.referromizer.repository;
 
-import com.treyla.referromizer.domain.Wallet;
+import com.lrstry.referromizer.domain.Wallet;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.UUID;

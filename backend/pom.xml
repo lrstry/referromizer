@@ -7,7 +7,7 @@
 
     <parent>
         <artifactId>referromizer</artifactId>
-        <groupId>com.treyla</groupId>
+        <groupId>com.lrstry</groupId>
         <version>1.0-SNAPSHOT</version>
     </parent>
 
@@ -19,7 +19,7 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
-        <start-class>com.treyla.referromizer.ReferromizerApplication</start-class>
+        <start-class>com.lrstry.referromizer.ReferromizerApplication</start-class>
     </properties>
 
     <dependencies>

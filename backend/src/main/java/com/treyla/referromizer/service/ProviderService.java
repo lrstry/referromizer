@@ -1,6 +1,6 @@
-package com.treyla.referromizer.service;
+package com.lrstry.referromizer.service;
 
-import com.treyla.referromizer.domain.Provider;
+import com.lrstry.referromizer.domain.Provider;
 
 import java.util.List;
 import java.util.UUID;

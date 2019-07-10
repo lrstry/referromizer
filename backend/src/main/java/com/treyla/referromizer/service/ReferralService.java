@@ -1,10 +1,10 @@
-package com.treyla.referromizer.service;
+package com.lrstry.referromizer.service;
 
-import com.treyla.referromizer.domain.Referral;
+import com.lrstry.referromizer.domain.Referral;
 
 import java.util.UUID;
 
-import static com.treyla.referromizer.domain.Referral.ReferralBuilder;
+import static com.lrstry.referromizer.domain.Referral.ReferralBuilder;
 
 public interface ReferralService {
 

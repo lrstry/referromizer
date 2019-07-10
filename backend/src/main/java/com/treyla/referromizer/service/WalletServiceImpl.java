@@ -1,7 +1,7 @@
-package com.treyla.referromizer.service;
+package com.lrstry.referromizer.service;
 
-import com.treyla.referromizer.domain.Wallet;
-import com.treyla.referromizer.repository.WalletRepository;
+import com.lrstry.referromizer.domain.Wallet;
+import com.lrstry.referromizer.repository.WalletRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

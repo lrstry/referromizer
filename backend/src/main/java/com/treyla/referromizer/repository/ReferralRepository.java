@@ -1,6 +1,6 @@
-package com.treyla.referromizer.repository;
+package com.lrstry.referromizer.repository;
 
-import com.treyla.referromizer.domain.Referral;
+import com.lrstry.referromizer.domain.Referral;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.transaction.annotation.Transactional;
 

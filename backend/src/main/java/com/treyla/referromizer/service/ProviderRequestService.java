@@ -1,11 +1,11 @@
-package com.treyla.referromizer.service;
+package com.lrstry.referromizer.service;
 
-import com.treyla.referromizer.domain.ProviderRequest;
+import com.lrstry.referromizer.domain.ProviderRequest;
 
 import java.util.List;
 import java.util.UUID;
 
-import static com.treyla.referromizer.domain.ProviderRequest.ProviderRequestBuilder;
+import static com.lrstry.referromizer.domain.ProviderRequest.ProviderRequestBuilder;
 
 public interface ProviderRequestService {
 

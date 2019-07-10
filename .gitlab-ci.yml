@@ -22,9 +22,9 @@ maven-build:
 docker-build:
   stage: package
   script:
-  - docker build -t registry.gitlab.com/treyla/referromizer .
+  - docker build -t registry.gitlab.com/lrstry/referromizer .
   - docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN registry.gitlab.com
-  - docker push registry.gitlab.com/treyla/referromizer
+  - docker push registry.gitlab.com/lrstry/referromizer
   - docker login --username=_ --password=$HEROKU_API_KEY registry.heroku.com
   - docker build -t registry.heroku.com/referromizer/web .
   - docker push registry.heroku.com/referromizer/web

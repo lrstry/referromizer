@@ -1,4 +1,4 @@
-package com.treyla.referromizer.config;
+package com.lrstry.referromizer.config;
 
 import org.apache.tomcat.jdbc.pool.DataSource;
 import org.springframework.context.annotation.Bean;

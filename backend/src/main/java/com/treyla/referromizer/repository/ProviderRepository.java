@@ -1,6 +1,6 @@
-package com.treyla.referromizer.repository;
+package com.lrstry.referromizer.repository;
 
-import com.treyla.referromizer.domain.Provider;
+import com.lrstry.referromizer.domain.Provider;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;

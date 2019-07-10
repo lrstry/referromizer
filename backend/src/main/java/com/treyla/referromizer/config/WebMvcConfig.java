@@ -1,4 +1,4 @@
-package com.treyla.referromizer.config;
+package com.lrstry.referromizer.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

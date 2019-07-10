@@ -1,4 +1,4 @@
-package com.treyla.referromizer.util;
+package com.lrstry.referromizer.util;
 
 import org.apache.commons.validator.routines.UrlValidator;
 
