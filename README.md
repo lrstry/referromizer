@@ -8,5 +8,5 @@
   <b>Spread the word.</b>
 </p>
 <p align="center">
-  http://www.referromizer.org
+  https://referromizer.herokuapp.com/
 </p>
