@@ -9,3 +9,4 @@
 </p>
 <p align="center">https://referromizer.herokuapp.com/</p>
 <p align="center">Deployed on Heroku, using GitLab CI.</p>
+<p align="center">[![pipeline status](https://gitlab.com/lrstry/referromizer/badges/master/pipeline.svg)](https://gitlab.com/lrstry/referromizer/commits/master)</p>
