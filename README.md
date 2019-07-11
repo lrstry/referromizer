@@ -8,5 +8,10 @@
   <b>Spread the word.</b>
 </p>
 <p align="center">https://referromizer.herokuapp.com/</p>
-<p align="center">Deployed on Heroku, using GitLab CI.</p>
-<p align="center">[![pipeline status](https://gitlab.com/lrstry/referromizer/badges/master/pipeline.svg)](https://gitlab.com/lrstry/referromizer/commits/master)</p>
+
+<p align="center">
+    <a href="https://gitlab.com/lrstry/referromizer/commits/master">
+        <img src="https://img.shields.io/gitlab/pipeline/lrstry/referromizer.svg?logo=gitlab&style=popout"
+             alt="pipeline status">
+    </a>
+</p>
